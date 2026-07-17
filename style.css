@@ -1,0 +1,168 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff7eb3,#a855f7);
+color:white;
+text-align:center;
+overflow-x:hidden;
+min-height:100vh;
+}
+
+.hero{
+padding:70px 20px;
+}
+
+.hero h1{
+font-size:2.5rem;
+animation:glow 2s infinite alternate;
+}
+
+.subtitle{
+margin-top:15px;
+font-size:1.1rem;
+opacity:0.9;
+}
+
+#countdown{
+margin:25px auto;
+font-size:1.4rem;
+font-weight:bold;
+background:rgba(255,255,255,0.2);
+padding:15px;
+width:90%;
+max-width:420px;
+border-radius:15px;
+backdrop-filter:blur(10px);
+}
+
+button{
+padding:14px 28px;
+border:none;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+background:white;
+color:#d63384;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+.gallery{
+padding:40px 20px;
+}
+
+.gallery h2{
+margin-bottom:20px;
+}
+
+.photos{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+max-width:700px;
+margin:auto;
+}
+
+.photos img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:20px;
+border:3px solid white;
+box-shadow:0 0 15px rgba(255,255,255,.5);
+}
+
+.letter{
+padding:50px 20px;
+max-width:700px;
+margin:auto;
+}
+
+.letter p{
+margin-top:15px;
+font-size:1.1rem;
+line-height:1.8;
+background:rgba(255,255,255,.15);
+padding:20px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+}
+
+.music{
+padding:40px 20px;
+}
+
+audio{
+width:90%;
+max-width:400px;
+}
+
+.ending{
+padding:70px 20px;
+font-size:1.3rem;
+}
+
+.hearts{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+bottom:-30px;
+animation:floatHeart 6s linear forwards;
+}
+
+@keyframes floatHeart{
+0%{
+transform:translateY(0) scale(.5);
+opacity:1;
+}
+100%{
+transform:translateY(-110vh) scale(1.4);
+opacity:0;
+}
+}
+
+@keyframes glow{
+from{
+text-shadow:0 0 10px white;
+}
+to{
+text-shadow:0 0 30px pink,0 0 50px violet;
+}
+}
+
+@media(max-width:600px){
+
+.hero h1{
+font-size:2rem;
+}
+
+.photos{
+grid-template-columns:1fr;
+}
+
+.photos img{
+height:220px;
+}
+
+button{
+width:90%;
+}
+
+                }
