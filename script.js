@@ -2,63 +2,24 @@
 // LOADING SCREEN
 // =================================
 
-window.addEventListener("load",()=>{
+window.addEventListener("load", () => {
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
-        let loading=document.getElementById("loadingScreen");
+        let loading = document.getElementById("loadingScreen");
 
-        if(loading){
-    loading.style.display="none";
-}
-
-
-
-        let first=document.querySelector(".screen");
-
-        if(first){
-            first.classList.add("active");
+        if (loading) {
+            loading.style.display = "none";
         }
 
-    },4000);
+        showScreen("welcomeScreen");
+
+    }, 4000);
 
 });
 
-
-
 // =================================
-// TYPEWRITER EFFECT
-// =================================
-
-let text =
-"Rishuu, you are a very special person in my life. ❤️ Thank you for every smile and every beautiful moment.";
-
-let index=0;
-
-
-function typeWriter(){
-
-    let box=document.getElementById("typewriterText");
-
-    if(box && index < text.length){
-
-        box.innerHTML += text.charAt(index);
-
-        index++;
-
-        setTimeout(typeWriter,80);
-
-    }
-
-}
-
-
-setTimeout(typeWriter,4500);
-
-
-
-// =================================
-// SCREEN CHANGE FUNCTION
+// SHOW SCREEN FUNCTION
 // =================================
 
 function showScreen(id){
@@ -69,7 +30,6 @@ function showScreen(id){
 
     });
 
-
     let next=document.getElementById(id);
 
     if(next){
@@ -79,64 +39,113 @@ function showScreen(id){
     }
 
 }
-// START BUTTON + COUNTDOWN
+
+// =================================
+// TYPEWRITER EFFECT
+// =================================
+
+let text =
+"Rishuu ❤️,\n\nHappy Birthday to the most beautiful person in my life.\n\nThank you for making every day special. I wish you endless happiness, smiles, success and lots of love.\n\nAlways keep smiling.\n\nForever Yours,\nNaitik ❤️";
+
+let index = 0;
+
+function typeWriter(){
+
+    let box = document.getElementById("typewriterText");
+
+    if(!box) return;
+
+    box.innerHTML = "";
+
+    index = 0;
+
+    function typing(){
+
+        if(index < text.length){
+
+            if(text.charAt(index) === "\n"){
+
+                box.innerHTML += "<br>";
+
+            }else{
+
+                box.innerHTML += text.charAt(index);
+
+            }
+
+            index++;
+
+            setTimeout(typing,45);
+
+        }
+
+    }
+
+    typing();
+
+}
+
+// =================================
+// START BUTTON
+// =================================
 
 let startBtn = document.getElementById("startBtn");
 
 if(startBtn){
 
-startBtn.onclick = function(){
+    startBtn.onclick = function(){
 
-    showScreen("closeEyesScreen");
+        showScreen("closeEyesScreen");
 
-    let number = document.getElementById("countdownNumber");
+        let number = document.getElementById("countdownNumber");
 
-    let count = 3;
-
-    number.innerHTML = count;
-
-
-    let timer = setInterval(()=>{
-
-        count--;
+        let count = 3;
 
         number.innerHTML = count;
 
+        let timer = setInterval(()=>{
 
-        if(count === 0){
+            count--;
 
-            clearInterval(timer);
+            number.innerHTML = count;
 
-            setTimeout(()=>{
+            if(count <= 0){
 
-                showScreen("giftScreen");
+                clearInterval(timer);
 
-            },1000);
+                setTimeout(()=>{
 
-        }
+                    showScreen("giftScreen");
 
-    },1000);
+                },1000);
 
-};
+            }
+
+        },1000);
+
+    };
 
 }
 
-
-// OPEN GIFT BUTTON
+// =================================
+// OPEN GIFT
+// =================================
 
 let openGiftBtn = document.getElementById("openGiftBtn");
 
 if(openGiftBtn){
 
-openGiftBtn.onclick = function(){
+    openGiftBtn.onclick=function(){
 
-    showScreen("birthdayScreen");
+        showScreen("birthdayScreen");
 
-};
+    };
 
 }
+
+console.log("Script Part 3.1 Loaded ❤️");
 // =================================
-// BLOW CANDLES BUTTON
+// BLOW CANDLES
 // =================================
 
 let blowBtn = document.getElementById("blowCandles");
@@ -145,203 +154,139 @@ if(blowBtn){
 
     blowBtn.onclick = function(){
 
+        // Hide candle flames
+        document.querySelectorAll(".candle").forEach(candle=>{
 
-        let birthdayMsg = document.createElement("div");
+            candle.style.opacity="0.3";
 
-        birthdayMsg.innerHTML = "🎂 Happy Birthday Rishuu ❤️";
+            candle.style.transform="scale(0.9)";
 
+        });
 
-        birthdayMsg.className = "birthday-popup";
+        // Birthday Popup
+        let popup=document.createElement("div");
 
+        popup.className="birthday-popup";
 
-        document.body.appendChild(birthdayMsg);
+        popup.innerHTML="🎉<br>Happy Birthday<br>Rishuu ❤️";
 
+        document.body.appendChild(popup);
 
-
+        // Remove popup after 3 seconds
         setTimeout(()=>{
 
-
-            birthdayMsg.remove();
-
+            popup.remove();
 
             showScreen("letterScreen");
 
+            typeWriter();
 
         },3000);
-
 
     };
 
 }
+
 // =================================
-// BUTTON SCREEN CHANGES
+// LETTER → LOVE SCREEN
 // =================================
 
+function openLoveScreen(){
 
-let finalBtn = document.getElementById("finalSurpriseBtn");
+    showScreen("loveScreen");
+
+}
+
+// Automatically move after letter finishes
+setTimeout(()=>{
+
+    let letter=document.getElementById("letterScreen");
+
+    if(letter && letter.classList.contains("active")){
+
+        showScreen("loveScreen");
+
+    }
+
+},18000);
+
+// =================================
+// LOVE SCREEN → FINAL SCREEN
+// =================================
+
+let finalBtn=document.getElementById("finalSurpriseBtn");
 
 if(finalBtn){
 
-    finalBtn.addEventListener("click",()=>{
+    finalBtn.onclick=function(){
 
         showScreen("finalScreen");
 
-    });
+    };
 
 }
 
+console.log("Script Part 3.2 Loaded ❤️");
+// =================================
+// LETTER → LOVE SCREEN
+// =================================
 
+function goToLoveScreen(){
 
-let secretBtn = document.getElementById("secretBtn");
-
-if(secretBtn){
-
-    secretBtn.addEventListener("click",()=>{
-
-        let message=document.getElementById("hiddenMessage");
-
-
-        if(message){
-
-            message.style.display="block";
-
-        }
-
-    });
+    showScreen("loveScreen");
 
 }
 
+setTimeout(()=>{
+
+    let letter=document.getElementById("letterScreen");
+
+    if(letter && letter.classList.contains("active")){
+
+        showScreen("loveScreen");
+
+    }
+
+},18000);
 
 
 // =================================
 // MUSIC CONTROL
 // =================================
 
-
+let music=document.getElementById("birthdayMusic");
 let musicBtn=document.getElementById("musicControl");
 
-let musicPlaying=false;
+if(music && musicBtn){
 
+    let playing=false;
 
-// Apni music file ka naam yahan rakhna
-let music=new Audio("birthday.mp3");
+    musicBtn.onclick=function(){
 
-music.loop=true;
-
-
-if(musicBtn){
-
-    musicBtn.addEventListener("click",()=>{
-
-
-        if(musicPlaying){
+        if(playing){
 
             music.pause();
-
             musicBtn.innerHTML="🎵";
-
-            musicPlaying=false;
-
+            playing=false;
 
         }else{
 
-
             music.play();
-
-            musicBtn.innerHTML="⏸️";
-
-            musicPlaying=true;
-
+            musicBtn.innerHTML="⏸";
+            playing=true;
 
         }
 
-
-    });
-
-}
-
-
-
-// =================================
-// FLOATING ROSES GENERATOR
-// =================================
-
-
-function createRose(){
-
-
-    let rose=document.createElement("div");
-
-    rose.className="rose";
-
-    rose.innerHTML="🌹";
-
-
-    rose.style.left=Math.random()*100+"vw";
-
-    rose.style.animationDuration=(5+Math.random()*5)+"s";
-
-
-    document.body.appendChild(rose);
-
-
-    setTimeout(()=>{
-
-        rose.remove();
-
-    },10000);
-
+    };
 
 }
 
 
-setInterval(createRose,700);
 // =================================
-// FLOATING STARS GENERATOR
+// FLOATING HEARTS
 // =================================
-
-
-function createStar(){
-
-
-    let star=document.createElement("div");
-
-    star.className="star";
-
-    star.innerHTML="✨";
-
-
-    star.style.left=Math.random()*100+"vw";
-
-    star.style.top=Math.random()*100+"vh";
-
-    star.style.animationDuration=(2+Math.random()*3)+"s";
-
-
-    document.body.appendChild(star);
-
-
-    setTimeout(()=>{
-
-        star.remove();
-
-    },5000);
-
-
-}
-
-
-setInterval(createStar,500);
-
-
-
-// =================================
-// HEART PARTICLES
-// =================================
-
 
 function createHeart(){
-
 
     let heart=document.createElement("div");
 
@@ -349,131 +294,94 @@ function createHeart(){
 
     heart.innerHTML="❤️";
 
-
     heart.style.left=Math.random()*100+"vw";
 
-    heart.style.animationDuration=(3+Math.random()*4)+"s";
+    heart.style.fontSize=(18+Math.random()*20)+"px";
 
+    heart.style.animationDuration=(3+Math.random()*3)+"s";
 
     document.body.appendChild(heart);
-
 
     setTimeout(()=>{
 
         heart.remove();
 
-    },7000);
-
-
-}
-
-
-setInterval(createHeart,800);
-
-
-
-// =================================
-// BUTTON GLOW EFFECT
-// =================================
-
-
-let buttons=document.querySelectorAll("button");
-
-
-buttons.forEach(btn=>{
-
-
-    btn.addEventListener("mouseenter",()=>{
-
-        btn.style.boxShadow="0 0 35px white";
-
-    });
-
-
-
-    btn.addEventListener("mouseleave",()=>{
-
-        btn.style.boxShadow="0 0 20px rgba(255,255,255,0.4)";
-
-    });
-
-
-});
-
-
-
-// =================================
-// MEMORY SCREEN BUTTON SUPPORT
-// =================================
-
-
-function openMemory(){
-
-    showScreen("memoryScreen");
+    },6000);
 
 }
 
+setInterval(createHeart,700);
 
-function openQuote(){
 
-    showScreen("quoteScreen");
+// =================================
+// FLOATING STARS
+// =================================
+
+function createStar(){
+
+    let star=document.createElement("div");
+
+    star.className="star";
+
+    star.innerHTML="✨";
+
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+
+    document.body.appendChild(star);
+
+    setTimeout(()=>{
+
+        star.remove();
+
+    },4000);
 
 }
 
+setInterval(createStar,500);
 
-function openSecret(){
 
-    showScreen("secretScreen");
+// =================================
+// FLOATING ROSES
+// =================================
+
+function createRose(){
+
+    let rose=document.createElement("div");
+
+    rose.className="rose";
+
+    rose.innerHTML="🌹";
+
+    rose.style.left=Math.random()*100+"vw";
+
+    document.body.appendChild(rose);
+
+    setTimeout(()=>{
+
+        rose.remove();
+
+    },8000);
 
 }
 
+setInterval(createRose,1200);
 
-function openThank(){
 
-    showScreen("thankScreen");
+// =================================
+// FINAL BUTTON
+// =================================
+
+let finalBtn=document.getElementById("finalSurpriseBtn");
+
+if(finalBtn){
+
+    finalBtn.onclick=function(){
+
+        showScreen("finalScreen");
+
+    };
 
 }
 
-
-
-
-
-// =================================
-// SMOOTH TOUCH SUPPORT
-// =================================
-
-
-document.addEventListener("touchstart",()=>{
-
-    document.body.style.userSelect="none";
-
-});
-
-
-
-// =================================
-// PAGE START EFFECT
-// =================================
-
-
-console.log("Birthday Surprise Website Loaded ❤️");
-
-
-
-// =================================
-// FINAL SECURITY CHECK
-// =================================
-
-
-window.addEventListener("beforeunload",()=>{
-
-    window.scrollTo(0,0);
-
-});
-
-
-// =================================
-// END OF JAVASCRIPT
-// =================================
-
-
+console.log("Script Part 3.3 Loaded ❤️");
