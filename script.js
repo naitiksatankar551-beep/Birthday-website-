@@ -99,6 +99,37 @@ if(startBtn){
 
 }
 // =================================
+// CLOSE EYES COUNTDOWN
+// =================================
+
+let countdown = 3;
+
+function startCountdown(){
+
+    let number = document.getElementById("countdownNumber");
+
+    let timer = setInterval(()=>{
+
+        countdown--;
+
+        if(number){
+            number.innerHTML = countdown;
+        }
+
+        if(countdown === 0){
+
+            clearInterval(timer);
+
+            showScreen("giftScreen");
+
+            countdown = 3;
+
+        }
+
+    },1000);
+
+}
+// =================================
 // BUTTON SCREEN CHANGES
 // =================================
 
