@@ -167,9 +167,9 @@ startCountdown();
 // SCREEN 2 BUTTON
 // =============================
 
-const readyBtn = document.getElementById("readyBtn");
+const showBtn = document.getElementById("showBtn");
 
-readyBtn.addEventListener("click", () => {
+showBtn.addEventListener("click", () => {
 
     alert("Gift Box Coming Soon 🎁");
 
