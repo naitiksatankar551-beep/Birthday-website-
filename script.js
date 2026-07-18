@@ -84,28 +84,7 @@ function createSparkle() {
 setInterval(createSparkle, 250);
 
 
-// =============================
-// Button Click
-// =============================
 
-const startBtn = document.getElementById("startBtn");
-
-startBtn.addEventListener("click", () => {
-
-    startBtn.innerHTML = "Loading... 💖";
-
-    startBtn.disabled = true;
-
-    document.body.classList.add("fade-out");
-
-    // Screen 2 yahin se open hogi
-    setTimeout(() => {
-
-        alert("Screen 2 Coming Soon 🎁");
-
-    }, 1500);
-
-});
 // =============================
 // SCREEN 1 → SCREEN 2
 // =============================
