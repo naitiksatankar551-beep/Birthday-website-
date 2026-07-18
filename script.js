@@ -124,9 +124,6 @@ if(startBtn){
 // CLOSE EYES COUNTDOWN
 // =================================
 
-let countdown = 3;
-
-function startCountdown(){
 
     let number = document.getElementById("countdownNumber");
 
