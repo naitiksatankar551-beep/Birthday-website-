@@ -9,12 +9,13 @@ window.addEventListener("load",()=>{
         let loading=document.getElementById("loadingScreen");
 
         if(loading){
-            loading.style.display="none";
-        }
+    loading.style.display="none";
+}
+
 let website=document.getElementById("website");
 
 if(website){
-    website.classList.remove("hidden");
+    website.style.display="block";
 }
 
         let first=document.querySelector(".screen");
