@@ -79,7 +79,6 @@ function showScreen(id){
 
 }
 
-</script>
 // =================================
 // BUTTON SCREEN CHANGES
 // =================================
