@@ -1,5 +1,3 @@
-<script>
-
 // =================================
 // LOADING SCREEN
 // =================================
@@ -402,4 +400,4 @@ window.addEventListener("beforeunload",()=>{
 // END OF JAVASCRIPT
 // =================================
 
-</script>
+
