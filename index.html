@@ -1,154 +1,573 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Rishuu ❤️</title>
 
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<title>Happy Birthday Rishuu ❤️</title>
+
+<meta name="theme-color" content="#ff5fa2">
+<meta name="description" content="A Special Birthday Surprise For Rishuu">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<!-- ========================= -->
-<!-- PREMIUM LOADING SCREEN -->
-<!-- ========================= -->
+<!-- ================================= -->
+<!-- LOADING SCREEN -->
+<!-- ================================= -->
 
-<div id="loading-screen">
+<div id="loadingScreen">
 
-    <div class="stars"></div>
+<div class="loading-bg"></div>
 
-    <div class="loader-box">
+<div class="loading-box">
 
-        <div class="heart-loader">❤️</div>
+<div class="heart-loader">
+❤️
+</div>
 
-        <h2 class="loading-title">
-            A Little Gift From Your
-            <br>
-            <span>Rasgulla ❤️</span>
-        </h2>
+<h1 class="gift-title">
 
-        <p id="loadingMessage">
-            Preparing something magical...
-        </p>
+A Little Gift
 
-        <div class="progress">
-            <div id="progressBar"></div>
-        </div>
+</h1>
 
-        <div id="percent">
-            0%
-        </div>
+<h2 class="gift-subtitle">
 
-    </div>
+From Your Rasgulla ❤️
+
+</h2>
+
+<p class="gift-text">
+
+Made With Love By Naitik ❤️
+
+</p>
+
+<div class="progress-area">
+
+<div class="progress-track">
+
+<div id="progressBar"></div>
 
 </div>
 
-<!-- ========================= -->
-<!-- WELCOME PAGE -->
-<!-- ========================= -->
+</div>
 
-<section id="welcome">
+<div id="loadingPercent">
 
-    <div class="overlay"></div>
+0%
 
-    <div class="welcome-content">
+</div>
 
-        <h3>
-            🌹 Happy Birthday 🌹
-        </h3>
+</div>
 
-        <h1>
-            Rishuu ❤️
-        </h1>
+</div>
 
-        <p>
+<!-- ================================= -->
+<!-- MAIN WEBSITE -->
+<!-- ================================= -->
 
-            Every flower blooms beautifully...
+<div id="website" class="hidden">
 
-            But today,
+<!-- Floating Background -->
 
-            the most beautiful one is celebrating
-            her birthday.
+<div id="particles"></div>
 
-        </p>
-
-        <button id="startBtn">
-
-            🎁 Open My Surprise
-
-        </button>
-
-    </div>
-
-</section>
-
-<!-- Falling Rose Petals -->
-<div id="petals"></div>
-
-<!-- Floating Hearts -->
-<div id="hearts"></div>
-
-<!-- Sparkles -->
 <div id="sparkles"></div>
 
-<script src="script.js"></script>
+<div id="floatingHearts"></div>
 
-</body>
-</html>
-<!-- ===== PREMIUM LOADING SCREEN ===== -->
-<div id="loading-screen">
+<div id="rosePetals"></div>
 
-  <div class="loading-box">
+<div id="butterflies"></div>
 
-    <div class="gift-loader">
-      🎁
-    </div>
+<!-- ================================= -->
+<!-- WELCOME SCREEN -->
+<!-- ================================= -->
 
-    <h1 class="loading-title">
-      A Little Gift For You
-    </h1>
+<section id="welcomeScreen" class="screen active">
 
-    <h2 class="loading-name">
-      From Your Naitik ❤️
-    </h2>
+<div class="glass-card">
 
-    <p class="loading-nickname">
-      Hello Rasgulla 💖
-    </p>
+<h3>
 
-    <div class="loading-bar">
-      <div class="loading-progress"></div>
-    </div>
+🌹 Happy Birthday 🌹
 
-  </div>
+</h3>
+
+<h1>
+
+Rishuu ❤️
+
+</h1>
+
+<p>
+
+Every flower blooms beautifully...
+
+Today the most beautiful one
+
+is celebrating her birthday.
+
+</p>
+
+<button id="startBtn">
+
+🎁 Open My Surprise
+
+</button>
 
 </div>
 
-<!-- ===== MAIN WEBSITE ===== -->
-<div id="website" style="display:none;">
-    <!-- ===== HERO SECTION ===== -->
-<section class="hero">
+</section>
 
-  <h1 class="main-title">
-    Happy Birthday Tanushree ❤️
-  </h1>
+<!-- ================================= -->
+<!-- CLOSE YOUR EYES -->
+<!-- ================================= -->
 
-  <h2 class="sub-title">
-    A Magical Surprise Awaits You ✨
-  </h2>
+<section id="closeEyesScreen" class="screen">
 
-  <button id="startBtn" class="start-btn">
-    Open My Surprise 🎁
-  </button>
+<div class="glass-card">
+
+<h1>
+
+👀 Close Your Eyes...
+
+</h1>
+
+<p>
+
+For Just 3 Seconds ❤️
+
+</p>
+
+<h2 id="countdownNumber">
+
+3
+
+</h2>
+
+</div>
+
+</section>
+<!-- ================================= -->
+<!-- GIFT SCREEN -->
+<!-- ================================= -->
+
+<section id="giftScreen" class="screen">
+
+<div class="glass-card gift-card">
+
+<h1>
+🎁
+</h1>
+
+<h2>
+
+Touch Your Birthday Gift
+
+</h2>
+
+<p>
+
+A magical surprise is waiting for you...
+
+</p>
+
+<div id="giftBox">
+
+<div class="gift-top"></div>
+
+<div class="gift-body"></div>
+
+<div class="gift-ribbon-v"></div>
+
+<div class="gift-ribbon-h"></div>
+
+</div>
+
+<button id="openGiftBtn">
+
+Open Gift ❤️
+
+</button>
+
+</div>
 
 </section>
 
-<!-- Floating Hearts -->
-<div class="hearts"></div>
+<!-- ================================= -->
+<!-- BIRTHDAY CELEBRATION -->
+<!-- ================================= -->
 
-<!-- Floating Roses -->
-<div class="roses"></div>
+<section id="birthdayScreen" class="screen">
+
+<div class="birthday-container">
+
+<h1>
+
+🎂 Happy Birthday
+
+</h1>
+
+<h2>
+
+Rishuu ❤️
+
+</h2>
+
+<p>
+
+May your smile always shine brighter than the stars.
+
+Today is all about you.
+
+</p>
+
+<div id="cake3d">
+
+<div class="cake-layer layer1"></div>
+
+<div class="cake-layer layer2"></div>
+
+<div class="cake-layer layer3"></div>
+
+<div class="candles">
+
+<span class="candle"></span>
+
+<span class="candle"></span>
+
+<span class="candle"></span>
+
+</div>
+
+</div>
+
+<button id="blowCandles">
+
+🕯 Blow The Candles
+
+</button>
+
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- FIREWORKS -->
+<!-- ================================= -->
+
+<div id="fireworksContainer"></div>
+
+<div id="confettiContainer"></div>
+
+<!-- ================================= -->
+<!-- BACKGROUND MUSIC -->
+<!-- ================================= -->
+
+<audio
+id="birthdayMusic"
+loop>
+
+<source
+src="assets/music/birthday.mp3"
+type="audio/mpeg">
+
+</audio>
+<!-- ================================= -->
+<!-- LOVE LETTER SCREEN -->
+<!-- ================================= -->
+
+<section id="letterScreen" class="screen">
+
+<div class="letter-wrapper">
+
+<div class="envelope" id="loveEnvelope">
+
+<div class="envelope-top"></div>
+
+<div class="envelope-body"></div>
+
+<div class="heart-seal">
+❤️
+</div>
+
+</div>
+
+<div class="letter-paper" id="letterPaper">
+
+<h1>
+
+💌 My Dearest Rishuu
+
+</h1>
+
+<p id="typewriterText"></p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- LOVE MESSAGE SCREEN -->
+<!-- ================================= -->
+
+<section id="loveScreen" class="screen">
+
+<div class="love-container">
+
+<h2>
+
+One More Thing...
+
+</h2>
+
+<h1 class="love-title">
+
+❤️ I LOVEEEEE YOUUUU TANUSHREE ❤️
+
+</h1>
+
+<p>
+
+Thank you for coming into my life.
+
+You make every day brighter.
+
+No matter what happens,
+
+I'll always pray for your happiness.
+
+</p>
+
+<h3>
+
+Forever Yours,
+
+</h3>
+
+<h2>
+
+Your Rasgulla (Naitik) ❤️
+
+</h2>
+
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- MAGIC EFFECTS -->
+<!-- ================================= -->
+
+<div id="floatingStars"></div>
+
+<div id="floatingRoses"></div>
+
+<div id="loveParticles"></div>
+
+<div id="glowEffect"></div>
+<!-- ================================= -->
+<!-- MUSIC CONTROL -->
+<!-- ================================= -->
+
+<div id="musicControl" class="music-btn">
+
+🎵
+
+</div>
+
+
+<!-- ================================= -->
+<!-- FINAL SURPRISE BUTTON -->
+<!-- ================================= -->
+
+<div id="finalButtonBox">
+
+<button id="finalSurpriseBtn">
+
+✨ Open Final Surprise ✨
+
+</button>
+
+</div>
+
+
+<!-- ================================= -->
+<!-- FINAL SURPRISE SCREEN -->
+<!-- ================================= -->
+
+<section id="finalScreen" class="screen">
+
+<div class="final-container">
+
+<h1>
+
+🎂 Happy Birthday Rishuu 🎂
+
+</h1>
+
+<p>
+
+Today is all about you ❤️
+
+A special day for a special person.
+
+</p>
+
+
+<div class="heart-box">
+
+❤️
+
+</div>
+
+
+<p class="final-message">
+
+May your life always be filled with
+
+love, smiles and endless happiness.
+
+</p>
+
+
+<h2>
+
+With lots of love ❤️
+
+</h2>
+
+
+<h3>
+
+Naitik
+
+</h3>
+
+
+</div>
+
+</section>
+
+
+<!-- ================================= -->
+<!-- END OF HTML BODY -->
+<!-- ================================= -->
+<!-- ================================= -->
+<!-- PHOTO MEMORY SCREEN -->
+<!-- ================================= -->
+
+<section id="memoryScreen" class="screen">
+
+<div class="memory-container">
+
+<h1>
+
+📸 Our Beautiful Memories
+
+</h1>
+
+<p>
+
+Some moments are special because they are with you ❤️
+
+</p>
+
+
+<div class="photo-gallery">
+
+
+<div class="photo-card">
+
+<img src="photo1.jpg" alt="Memory 1">
+
+</div>
+
+
+<div class="photo-card">
+
+<img src="photo2.jpg" alt="Memory 2">
+
+</div>
+
+
+<div class="photo-card">
+
+<img src="photo3.jpg" alt="Memory 3">
+
+</div>
+
+
+</div>
+
+
+<h2>
+
+Forever these moments will stay special ❤️
+
+</h2>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- FINAL LOVE QUOTE -->
+<!-- ================================= -->
+
+<section id="quoteScreen" class="screen">
+
+<div class="quote-container">
+
+
+<h1>
+
+✨ A Little Promise ✨
+
+</h1>
+
+
+<p>
+
+I promise to always support your dreams,
+
+respect your smile and pray for your happiness.
+
+</p>
+
+
+<div class="big-heart">
+
+❤️
+
+</div>
+
+
+<h2>
+
+Rishuu ❤️ Naitik
+
+</h2>
+
+
+</div>
+
+    </section>
