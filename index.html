@@ -1,94 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Rishuu ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Rishuu ❤️</title>
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<div class="hearts"></div>
+<!-- ========================= -->
+<!-- PREMIUM LOADING SCREEN -->
+<!-- ========================= -->
 
-<section class="hero">
-  <h1>🎂 Happy Birthday Rishuu ❤️</h1>
+<div id="loading-screen">
 
-  <p class="subtitle">
-    A special surprise made with lots of love by Lucky 💖
-  </p>
+    <div class="stars"></div>
 
-  <div id="countdown"></div>
+    <div class="loader-box">
 
-  <button id="surpriseBtn">
-    🎁 Open Your Surprise
-  </button>
-</section>
+        <div class="heart-loader">❤️</div>
 
-<section class="gallery">
-<h2>📸 Our Beautiful Memories</h2>
+        <h2 class="loading-title">
+            A Little Gift From Your
+            <br>
+            <span>Rasgulla ❤️</span>
+        </h2>
 
-<div class="photos">
+        <p id="loadingMessage">
+            Preparing something magical...
+        </p>
 
-<img src="photos/photo1.jpg">
+        <div class="progress">
+            <div id="progressBar"></div>
+        </div>
 
-<img src="photos/photo2.jpg">
+        <div id="percent">
+            0%
+        </div>
 
-<img src="photos/photo3.jpg">
-
-<img src="photos/photo4.jpg">
-
-<img src="photos/photo5.jpg">
-
-<img src="photos/photo6.jpg">
+    </div>
 
 </div>
 
-</section>
+<!-- ========================= -->
+<!-- WELCOME PAGE -->
+<!-- ========================= -->
 
-<section class="letter">
+<section id="welcome">
 
-<h2>💌 A Letter For You</h2>
+    <div class="overlay"></div>
 
-<p id="loveMessage">
+    <div class="welcome-content">
 
-Every moment with you is my favourite memory.
+        <h3>
+            🌹 Happy Birthday 🌹
+        </h3>
 
-You make my life brighter, happier and more beautiful.
+        <h1>
+            Rishuu ❤️
+        </h1>
 
-Thank you for being you.
+        <p>
 
-Happy Birthday, Rishuu ❤️
+            Every flower blooms beautifully...
 
-Forever Yours,
+            But today,
 
-Lucky 💖
+            the most beautiful one is celebrating
+            her birthday.
 
-</p>
+        </p>
 
-</section>
+        <button id="startBtn">
 
-<section class="music">
+            🎁 Open My Surprise
 
-<h2>🎵 Our Song</h2>
+        </button>
 
-<audio controls>
-
-<source src="song.mp3" type="audio/mpeg">
-
-</audio>
-
-</section>
-
-<section class="ending">
-
-<h2>I Love You Forever ❤️</h2>
-
-<p>May every birthday bring you endless happiness.</p>
+    </div>
 
 </section>
+
+<!-- Falling Rose Petals -->
+<div id="petals"></div>
+
+<!-- Floating Hearts -->
+<div id="hearts"></div>
+
+<!-- Sparkles -->
+<div id="sparkles"></div>
 
 <script src="script.js"></script>
 
 </body>
-  </html>
+</html>
