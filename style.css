@@ -1,1 +1,273 @@
+/* ===========================
+   RESET
+=========================== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    background:linear-gradient(-45deg,#ff4fa3,#ff7ec7,#c471ed,#6c63ff);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+}
+
+/* Animated Background */
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+}
+
+@keyframes bgMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+/* Screen */
+
+#screen1{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+/* Glass Card */
+
+.glass-card{
+
+    width:90%;
+    max-width:420px;
+
+    padding:40px 30px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.3);
+
+    text-align:center;
+
+    box-shadow:0 15px 45px rgba(0,0,0,.25);
+
+    animation:popup 1.2s ease;
+
+}
+
+@keyframes popup{
+
+    from{
+
+        opacity:0;
+        transform:translateY(40px) scale(.8);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+.top-text{
+
+    color:white;
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+    letter-spacing:1px;
+
+}
+
+.main-title{
+
+    font-family:'Great Vibes',cursive;
+
+    color:#fff;
+
+    font-size:52px;
+
+    margin-bottom:20px;
+
+    text-shadow:0 0 18px rgba(255,255,255,.7);
+
+}
+
+#typing-text{
+
+    color:white;
+
+    font-size:18px;
+
+    min-height:30px;
+
+    margin-bottom:35px;
+
+}
+
+/* Button */
+
+#startBtn{
+
+    border:none;
+
+    outline:none;
+
+    padding:16px 35px;
+
+    border-radius:50px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:linear-gradient(45deg,#ff2d8d,#ff5fb2);
+
+    transition:.3s;
+
+    box-shadow:0 8px 25px rgba(255,0,120,.45);
+
+}
+
+#startBtn:hover{
+
+    transform:scale(1.08);
+
+}
+
+#startBtn:disabled{
+
+    opacity:.8;
+
+}
+
+/* Hearts */
+
+#hearts,
+#sparkles{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+.heart{
+
+    position:absolute;
+
+    bottom:-50px;
+
+    animation:floatHeart linear forwards;
+
+}
+
+@keyframes floatHeart{
+
+    from{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:translateY(-120vh);
+
+        opacity:0;
+
+    }
+
+}
+
+/* Sparkles */
+
+.sparkle{
+
+    position:absolute;
+
+    animation:twinkle ease-in-out infinite;
+
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+
+        opacity:0;
+
+        transform:scale(.5);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:scale(1.4);
+
+    }
+
+}
+
+/* Fade Out */
+
+.fade-out{
+
+    animation:fadeOut 1.5s forwards;
+
+}
+
+@keyframes fadeOut{
+
+    to{
+
+        opacity:0;
+
+        transform:scale(1.05);
+
+    }
+
+  }
