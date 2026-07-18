@@ -710,3 +710,48 @@ button:hover{
     }
 
                              }
+/* ================================= */
+/* BIRTHDAY POPUP ANIMATION */
+/* ================================= */
+
+.birthday-popup{
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%) scale(1);
+
+    font-size:40px;
+
+    font-weight:bold;
+
+    color:white;
+
+    z-index:99999;
+
+    text-align:center;
+
+    animation:birthdayPop 1s infinite alternate;
+
+    text-shadow:0 0 20px #ff69b4;
+
+}
+
+
+@keyframes birthdayPop{
+
+    from{
+
+        transform:translate(-50%,-50%) scale(1);
+
+    }
+
+    to{
+
+        transform:translate(-50%,-50%) scale(1.2);
+
+    }
+
+}
