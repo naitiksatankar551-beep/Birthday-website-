@@ -84,21 +84,42 @@ function showScreen(id){
 
 }
 // =================================
-// START BUTTON
+// START BUTTON + COUNTDOWN
 // =================================
 
 let startBtn = document.getElementById("startBtn");
 
 if(startBtn){
 
-    startBtn.addEventListener("click",()=>{
+    startBtn.onclick = function(){
 
         showScreen("closeEyesScreen");
 
-    });
+        let number = document.getElementById("countdownNumber");
+
+        let count = 3;
+
+        number.innerHTML = count;
+
+        let timer = setInterval(function(){
+
+            count--;
+
+            number.innerHTML = count;
+
+            if(count === 0){
+
+                clearInterval(timer);
+
+                showScreen("giftScreen");
+
+            }
+
+        },1000);
+
+    };
 
 }
-startCountdown();
 // =================================
 // CLOSE EYES COUNTDOWN
 // =================================
