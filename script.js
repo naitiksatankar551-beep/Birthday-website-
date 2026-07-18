@@ -379,7 +379,15 @@ function openThank(){
 }
 
 
+// =================================
+// OPEN SURPRISE BUTTON
+// =================================
 
+document.getElementById("startBtn").onclick = function(){
+
+    showScreen("closeEyesScreen");
+
+};
 // =================================
 // SMOOTH TOUCH SUPPORT
 // =================================
