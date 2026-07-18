@@ -1,108 +1,405 @@
-// Countdown to 29 July
-const countdown = document.getElementById("countdown");
+<script>
 
-const birthday = new Date("July 29, 2026 00:00:00").getTime();
+// =================================
+// LOADING SCREEN
+// =================================
 
-const timer = setInterval(() => {
+window.addEventListener("load",()=>{
 
-  const now = new Date().getTime();
+    setTimeout(()=>{
 
-  const distance = birthday - now;
+        let loading=document.getElementById("loadingScreen");
 
-  if (distance <= 0) {
-    clearInterval(timer);
-
-    countdown.innerHTML =
-      "🎉 Happy Birthday Rishuu ❤️";
-
-    launchConfetti();
-
-    return;
-  }
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  countdown.innerHTML =
-    `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds ❤️`;
-
-}, 1000);
+        if(loading){
+            loading.style.display="none";
+        }
 
 
-// Surprise Button
-const btn = document.getElementById("surpriseBtn");
+        let first=document.querySelector(".screen");
 
-btn.addEventListener("click", () => {
+        if(first){
+            first.classList.add("active");
+        }
 
-  alert(`💖
-
-Happy Birthday My Beautiful Rishuu ❤️
-
-You are the most precious part of my life.
-
-May your smile always shine brighter than the stars.
-
-I promise to always stand beside you.
-
-Forever Yours,
-
-Lucky ❤️`);
+    },4000);
 
 });
 
 
-// Floating Hearts
-const hearts = document.querySelector(".hearts");
 
-setInterval(() => {
+// =================================
+// TYPEWRITER EFFECT
+// =================================
 
-  const heart = document.createElement("div");
+let text =
+"Rishuu, you are a very special person in my life. ❤️ Thank you for every smile and every beautiful moment.";
 
-  heart.innerHTML = "💖";
-
-  heart.classList.add("heart");
-
-  heart.style.left = Math.random() * 100 + "vw";
-
-  heart.style.fontSize =
-    (20 + Math.random() * 20) + "px";
-
-  hearts.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 6000);
-
-}, 400);
+let index=0;
 
 
-// Simple Confetti
-function launchConfetti() {
+function typeWriter(){
 
-  for (let i = 0; i < 80; i++) {
+    let box=document.getElementById("typewriterText");
 
-    const confetti = document.createElement("div");
+    if(box && index < text.length){
 
-    confetti.innerHTML = "🎉";
+        box.innerHTML += text.charAt(index);
 
-    confetti.style.position = "fixed";
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.top = "-20px";
-    confetti.style.fontSize = "25px";
-    confetti.style.transition = "4s linear";
+        index++;
 
-    document.body.appendChild(confetti);
+        setTimeout(typeWriter,80);
 
-    setTimeout(() => {
-      confetti.style.top = "100vh";
-    }, 100);
-
-    setTimeout(() => {
-      confetti.remove();
-    }, 4500);
-
-  }
+    }
 
 }
+
+
+setTimeout(typeWriter,4500);
+
+
+
+// =================================
+// SCREEN CHANGE FUNCTION
+// =================================
+
+function showScreen(id){
+
+    document.querySelectorAll(".screen").forEach(screen=>{
+
+        screen.classList.remove("active");
+
+    });
+
+
+    let next=document.getElementById(id);
+
+    if(next){
+
+        next.classList.add("active");
+
+    }
+
+}
+
+</script>
+// =================================
+// BUTTON SCREEN CHANGES
+// =================================
+
+
+let finalBtn = document.getElementById("finalSurpriseBtn");
+
+if(finalBtn){
+
+    finalBtn.addEventListener("click",()=>{
+
+        showScreen("finalScreen");
+
+    });
+
+}
+
+
+
+let secretBtn = document.getElementById("secretBtn");
+
+if(secretBtn){
+
+    secretBtn.addEventListener("click",()=>{
+
+        let message=document.getElementById("hiddenMessage");
+
+
+        if(message){
+
+            message.style.display="block";
+
+        }
+
+    });
+
+}
+
+
+
+// =================================
+// MUSIC CONTROL
+// =================================
+
+
+let musicBtn=document.getElementById("musicControl");
+
+let musicPlaying=false;
+
+
+// Apni music file ka naam yahan rakhna
+let music=new Audio("music.mp3");
+
+music.loop=true;
+
+
+if(musicBtn){
+
+    musicBtn.addEventListener("click",()=>{
+
+
+        if(musicPlaying){
+
+            music.pause();
+
+            musicBtn.innerHTML="🎵";
+
+            musicPlaying=false;
+
+
+        }else{
+
+
+            music.play();
+
+            musicBtn.innerHTML="⏸️";
+
+            musicPlaying=true;
+
+
+        }
+
+
+    });
+
+}
+
+
+
+// =================================
+// FLOATING ROSES GENERATOR
+// =================================
+
+
+function createRose(){
+
+
+    let rose=document.createElement("div");
+
+    rose.className="rose";
+
+    rose.innerHTML="🌹";
+
+
+    rose.style.left=Math.random()*100+"vw";
+
+    rose.style.animationDuration=(5+Math.random()*5)+"s";
+
+
+    document.body.appendChild(rose);
+
+
+    setTimeout(()=>{
+
+        rose.remove();
+
+    },10000);
+
+
+}
+
+
+setInterval(createRose,700);
+// =================================
+// FLOATING STARS GENERATOR
+// =================================
+
+
+function createStar(){
+
+
+    let star=document.createElement("div");
+
+    star.className="star";
+
+    star.innerHTML="✨";
+
+
+    star.style.left=Math.random()*100+"vw";
+
+    star.style.top=Math.random()*100+"vh";
+
+    star.style.animationDuration=(2+Math.random()*3)+"s";
+
+
+    document.body.appendChild(star);
+
+
+    setTimeout(()=>{
+
+        star.remove();
+
+    },5000);
+
+
+}
+
+
+setInterval(createStar,500);
+
+
+
+// =================================
+// HEART PARTICLES
+// =================================
+
+
+function createHeart(){
+
+
+    let heart=document.createElement("div");
+
+    heart.className="heart-particle";
+
+    heart.innerHTML="❤️";
+
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.animationDuration=(3+Math.random()*4)+"s";
+
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },7000);
+
+
+}
+
+
+setInterval(createHeart,800);
+
+
+
+// =================================
+// BUTTON GLOW EFFECT
+// =================================
+
+
+let buttons=document.querySelectorAll("button");
+
+
+buttons.forEach(btn=>{
+
+
+    btn.addEventListener("mouseenter",()=>{
+
+        btn.style.boxShadow="0 0 35px white";
+
+    });
+
+
+
+    btn.addEventListener("mouseleave",()=>{
+
+        btn.style.boxShadow="0 0 20px rgba(255,255,255,0.4)";
+
+    });
+
+
+});
+
+
+
+// =================================
+// AUTO LOVE SCREEN
+// =================================
+
+
+setTimeout(()=>{
+
+
+    let love=document.getElementById("loveScreen");
+
+
+    if(love){
+
+        love.classList.add("active");
+
+    }
+
+
+},12000);
+// =================================
+// MEMORY SCREEN BUTTON SUPPORT
+// =================================
+
+
+function openMemory(){
+
+    showScreen("memoryScreen");
+
+}
+
+
+function openQuote(){
+
+    showScreen("quoteScreen");
+
+}
+
+
+function openSecret(){
+
+    showScreen("secretScreen");
+
+}
+
+
+function openThank(){
+
+    showScreen("thankScreen");
+
+}
+
+
+
+// =================================
+// SMOOTH TOUCH SUPPORT
+// =================================
+
+
+document.addEventListener("touchstart",()=>{
+
+    document.body.style.userSelect="none";
+
+});
+
+
+
+// =================================
+// PAGE START EFFECT
+// =================================
+
+
+console.log("Birthday Surprise Website Loaded ❤️");
+
+
+
+// =================================
+// FINAL SECURITY CHECK
+// =================================
+
+
+window.addEventListener("beforeunload",()=>{
+
+    window.scrollTo(0,0);
+
+});
+
+
+// =================================
+// END OF JAVASCRIPT
+// =================================
+
+</script>
