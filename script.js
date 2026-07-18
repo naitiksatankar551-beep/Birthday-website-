@@ -11,7 +11,11 @@ window.addEventListener("load",()=>{
         if(loading){
             loading.style.display="none";
         }
+let website=document.getElementById("website");
 
+if(website){
+    website.classList.remove("hidden");
+}
 
         let first=document.querySelector(".screen");
 
