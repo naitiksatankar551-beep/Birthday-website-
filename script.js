@@ -101,21 +101,30 @@ if(startBtn){
 
         number.innerHTML = count;
 
+
         let timer = setInterval(function(){
 
-            count--;
+            count = count - 1;
 
-            number.innerHTML = count;
+            if(number){
+                number.innerHTML = count;
+            }
 
-            if(count === 0){
+
+            if(count <= 0){
 
                 clearInterval(timer);
 
-                showScreen("giftScreen");
+                setTimeout(()=>{
+
+                    showScreen("giftScreen");
+
+                },1000);
 
             }
 
         },1000);
+
 
     };
 
