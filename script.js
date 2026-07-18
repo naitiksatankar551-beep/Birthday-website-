@@ -102,7 +102,7 @@ startBtn.addEventListener("click", () => {
 
         screen1.style.display = "none";
         screen2.style.display = "flex";
-
+startCountdown();
     }, 1000);
 
 });
