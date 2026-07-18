@@ -135,21 +135,7 @@ openGiftBtn.onclick = function(){
 };
 
 }
-// =================================
-// OPEN GIFT BUTTON
-// =================================
 
-let openGiftBtn = document.getElementById("openGiftBtn");
-
-if(openGiftBtn){
-
-    openGiftBtn.onclick = function(){
-
-        showScreen("birthdayScreen");
-
-    };
-
-}
 // =================================
 // BLOW CANDLES BUTTON
 // =================================
