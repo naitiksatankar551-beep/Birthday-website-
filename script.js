@@ -83,7 +83,21 @@ function showScreen(id){
     }
 
 }
+// =================================
+// START BUTTON
+// =================================
 
+let startBtn = document.getElementById("startBtn");
+
+if(startBtn){
+
+    startBtn.addEventListener("click",()=>{
+
+        showScreen("closeEyesScreen");
+
+    });
+
+}
 // =================================
 // BUTTON SCREEN CHANGES
 // =================================
