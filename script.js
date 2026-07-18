@@ -107,6 +107,25 @@ function startCountdown(){
 
         i++;
 
+function startCountdown(){
+
+    const countdown =
+    document.getElementById("countdown");
+
+    const showBtn =
+    document.getElementById("showBtn");
+
+    let numbers = ["3","2","1"];
+
+    let i = 0;
+
+
+    let timer = setInterval(()=>{
+
+        countdown.innerHTML = numbers[i];
+
+        i++;
+
 
         if(i === numbers.length){
 
@@ -115,7 +134,9 @@ function startCountdown(){
             setTimeout(()=>{
 
                 countdown.innerHTML =
-                "Open Your Eyes ❤️";
+                "You Can Open Your Eyes Now ❤️";
+
+                showBtn.style.display="inline-block";
 
             },1000);
 
@@ -125,6 +146,7 @@ function startCountdown(){
     },1000);
 
 }
+    
 const startBtn = document.getElementById("startBtn");
 
 startBtn.addEventListener("click", () => {
