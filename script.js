@@ -1,387 +1,73 @@
-// =================================
-// LOADING SCREEN
-// =================================
+// ===============================
+// Screen 1 - Welcome Screen
+// ===============================
 
-window.addEventListener("load", () => {
+const startBtn = document.getElementById("startBtn");
 
+// Button click animation
+startBtn.addEventListener("click", () => {
+
+    // Button animation
+    startBtn.innerHTML = "Loading Surprise... 💖";
+    startBtn.disabled = true;
+
+    // Fade Out Effect
+    document.body.classList.add("fade-out");
+
+    // Go to Screen 2
     setTimeout(() => {
-
-        let loading = document.getElementById("loadingScreen");
-
-        if (loading) {
-            loading.style.display = "none";
-        }
-
-        showScreen("welcomeScreen");
-
-    }, 4000);
+        window.location.href = "gift.html";
+    }, 1800);
 
 });
 
-// =================================
-// SHOW SCREEN FUNCTION
-// =================================
+// Floating hearts generator
+const heartsContainer = document.querySelector(".hearts");
 
-function showScreen(id){
+setInterval(() => {
 
-    document.querySelectorAll(".screen").forEach(screen=>{
+    const heart = document.createElement("span");
 
-        screen.classList.remove("active");
+    heart.classList.add("heart");
 
-    });
+    const emojis = ["❤️","💖","💕","💗","💘","💞"];
 
-    let next=document.getElementById(id);
+    heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
 
-    if(next){
+    heart.style.left = Math.random() * 100 + "vw";
 
-        next.classList.add("active");
+    heart.style.fontSize = (18 + Math.random() * 18) + "px";
 
-    }
+    heart.style.animationDuration = (5 + Math.random() * 3) + "s";
 
-}
+    heartsContainer.appendChild(heart);
 
-// =================================
-// TYPEWRITER EFFECT
-// =================================
-
-let text =
-"Rishuu ❤️,\n\nHappy Birthday to the most beautiful person in my life.\n\nThank you for making every day special. I wish you endless happiness, smiles, success and lots of love.\n\nAlways keep smiling.\n\nForever Yours,\nNaitik ❤️";
-
-let index = 0;
-
-function typeWriter(){
-
-    let box = document.getElementById("typewriterText");
-
-    if(!box) return;
-
-    box.innerHTML = "";
-
-    index = 0;
-
-    function typing(){
-
-        if(index < text.length){
-
-            if(text.charAt(index) === "\n"){
-
-                box.innerHTML += "<br>";
-
-            }else{
-
-                box.innerHTML += text.charAt(index);
-
-            }
-
-            index++;
-
-            setTimeout(typing,45);
-
-        }
-
-    }
-
-    typing();
-
-}
-
-// =================================
-// START BUTTON
-// =================================
-
-let startBtn = document.getElementById("startBtn");
-
-if(startBtn){
-
-    startBtn.onclick = function(){
-
-        showScreen("closeEyesScreen");
-
-        let number = document.getElementById("countdownNumber");
-
-        let count = 3;
-
-        number.innerHTML = count;
-
-        let timer = setInterval(()=>{
-
-            count--;
-
-            number.innerHTML = count;
-
-            if(count <= 0){
-
-                clearInterval(timer);
-
-                setTimeout(()=>{
-
-                    showScreen("giftScreen");
-
-                },1000);
-
-            }
-
-        },1000);
-
-    };
-
-}
-
-// =================================
-// OPEN GIFT
-// =================================
-
-let openGiftBtn = document.getElementById("openGiftBtn");
-
-if(openGiftBtn){
-
-    openGiftBtn.onclick=function(){
-
-        showScreen("birthdayScreen");
-
-    };
-
-}
-
-console.log("Script Part 3.1 Loaded ❤️");
-// =================================
-// BLOW CANDLES
-// =================================
-
-let blowBtn = document.getElementById("blowCandles");
-
-if(blowBtn){
-
-    blowBtn.onclick = function(){
-
-        // Hide candle flames
-        document.querySelectorAll(".candle").forEach(candle=>{
-
-            candle.style.opacity="0.3";
-
-            candle.style.transform="scale(0.9)";
-
-        });
-
-        // Birthday Popup
-        let popup=document.createElement("div");
-
-        popup.className="birthday-popup";
-
-        popup.innerHTML="🎉<br>Happy Birthday<br>Rishuu ❤️";
-
-        document.body.appendChild(popup);
-
-        // Remove popup after 3 seconds
-        setTimeout(()=>{
-
-            popup.remove();
-
-            showScreen("letterScreen");
-
-            typeWriter();
-
-        },3000);
-
-    };
-
-}
-
-// =================================
-// LETTER → LOVE SCREEN
-// =================================
-
-function openLoveScreen(){
-
-    showScreen("loveScreen");
-
-}
-
-// Automatically move after letter finishes
-setTimeout(()=>{
-
-    let letter=document.getElementById("letterScreen");
-
-    if(letter && letter.classList.contains("active")){
-
-        showScreen("loveScreen");
-
-    }
-
-},18000);
-
-// =================================
-// LOVE SCREEN → FINAL SCREEN
-// =================================
-
-let finalBtn=document.getElementById("finalSurpriseBtn");
-
-if(finalBtn){
-
-    finalBtn.onclick=function(){
-
-        showScreen("finalScreen");
-
-    };
-
-}
-
-console.log("Script Part 3.2 Loaded ❤️");
-// =================================
-// LETTER → LOVE SCREEN
-// =================================
-
-function goToLoveScreen(){
-
-    showScreen("loveScreen");
-
-}
-
-setTimeout(()=>{
-
-    let letter=document.getElementById("letterScreen");
-
-    if(letter && letter.classList.contains("active")){
-
-        showScreen("loveScreen");
-
-    }
-
-},18000);
-
-
-// =================================
-// MUSIC CONTROL
-// =================================
-
-let music=document.getElementById("birthdayMusic");
-let musicBtn=document.getElementById("musicControl");
-
-if(music && musicBtn){
-
-    let playing=false;
-
-    musicBtn.onclick=function(){
-
-        if(playing){
-
-            music.pause();
-            musicBtn.innerHTML="🎵";
-            playing=false;
-
-        }else{
-
-            music.play();
-            musicBtn.innerHTML="⏸";
-            playing=true;
-
-        }
-
-    };
-
-}
-
-
-// =================================
-// FLOATING HEARTS
-// =================================
-
-function createHeart(){
-
-    let heart=document.createElement("div");
-
-    heart.className="heart-particle";
-
-    heart.innerHTML="❤️";
-
-    heart.style.left=Math.random()*100+"vw";
-
-    heart.style.fontSize=(18+Math.random()*20)+"px";
-
-    heart.style.animationDuration=(3+Math.random()*3)+"s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-
+    setTimeout(() => {
         heart.remove();
+    }, 8000);
 
-    },6000);
+}, 350);
 
-}
+// Sparkle generator
+const sparkles = document.querySelector(".sparkles");
 
-setInterval(createHeart,700);
+setInterval(() => {
 
+    const star = document.createElement("span");
 
-// =================================
-// FLOATING STARS
-// =================================
+    star.classList.add("sparkle");
 
-function createStar(){
+    star.innerHTML = "✨";
 
-    let star=document.createElement("div");
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
 
-    star.className="star";
+    star.style.animationDuration = (2 + Math.random() * 2) + "s";
 
-    star.innerHTML="✨";
+    sparkles.appendChild(star);
 
-    star.style.left=Math.random()*100+"vw";
-    star.style.top=Math.random()*100+"vh";
-
-    document.body.appendChild(star);
-
-    setTimeout(()=>{
-
+    setTimeout(() => {
         star.remove();
+    }, 4000);
 
-    },4000);
-
-}
-
-setInterval(createStar,500);
-
-
-// =================================
-// FLOATING ROSES
-// =================================
-
-function createRose(){
-
-    let rose=document.createElement("div");
-
-    rose.className="rose";
-
-    rose.innerHTML="🌹";
-
-    rose.style.left=Math.random()*100+"vw";
-
-    document.body.appendChild(rose);
-
-    setTimeout(()=>{
-
-        rose.remove();
-
-    },8000);
-
-}
-
-setInterval(createRose,1200);
-
-
-// =================================
-// FINAL BUTTON
-// =================================
-
-let finalBtn=document.getElementById("finalSurpriseBtn");
-
-if(finalBtn){
-
-    finalBtn.onclick=function(){
-
-        showScreen("finalScreen");
-
-    };
-
-}
-
-console.log("Script Part 3.3 Loaded ❤️");
+}, 250);
