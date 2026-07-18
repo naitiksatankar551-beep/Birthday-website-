@@ -79,50 +79,60 @@ function showScreen(id){
     }
 
 }
-// =================================
 // START BUTTON + COUNTDOWN
-// =================================
 
 let startBtn = document.getElementById("startBtn");
 
 if(startBtn){
 
-    startBtn.onclick = function(){
+startBtn.onclick = function(){
 
-        showScreen("closeEyesScreen");
+    showScreen("closeEyesScreen");
 
-        let number = document.getElementById("countdownNumber");
+    let number = document.getElementById("countdownNumber");
 
-        let count = 3;
+    let count = 3;
+
+    number.innerHTML = count;
+
+
+    let timer = setInterval(()=>{
+
+        count--;
 
         number.innerHTML = count;
 
 
-        let timer = setInterval(function(){
+        if(count === 0){
 
-            count = count - 1;
+            clearInterval(timer);
 
-            if(number){
-                number.innerHTML = count;
-            }
+            setTimeout(()=>{
 
+                showScreen("giftScreen");
 
-            if(count <= 0){
+            },1000);
 
-                clearInterval(timer);
+        }
 
-                setTimeout(()=>{
+    },1000);
 
-                    showScreen("giftScreen");
+};
 
-                },1000);
-
-            }
-
-        },1000);
+}
 
 
-    };
+// OPEN GIFT BUTTON
+
+let openGiftBtn = document.getElementById("openGiftBtn");
+
+if(openGiftBtn){
+
+openGiftBtn.onclick = function(){
+
+    showScreen("birthdayScreen");
+
+};
 
 }
 // =================================
