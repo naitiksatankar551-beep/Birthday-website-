@@ -12,11 +12,7 @@ window.addEventListener("load",()=>{
     loading.style.display="none";
 }
 
-let website=document.getElementById("website");
 
-if(website){
-    website.style.display="block";
-}
 
         let first=document.querySelector(".screen");
 
