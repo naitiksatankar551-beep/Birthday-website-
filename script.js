@@ -106,3 +106,37 @@ startBtn.addEventListener("click", () => {
     }, 1500);
 
 });
+// =============================
+// SCREEN 1 → SCREEN 2
+// =============================
+
+const screen1 = document.getElementById("screen1");
+const screen2 = document.getElementById("screen2");
+
+const startBtn = document.getElementById("startBtn");
+
+startBtn.addEventListener("click", () => {
+
+    screen1.style.animation = "fadeOut 1s forwards";
+
+    setTimeout(() => {
+
+        screen1.style.display = "none";
+        screen2.style.display = "flex";
+
+    }, 1000);
+
+});
+
+
+// =============================
+// SCREEN 2 BUTTON
+// =============================
+
+const readyBtn = document.getElementById("readyBtn");
+
+readyBtn.addEventListener("click", () => {
+
+    alert("Gift Box Coming Soon 🎁");
+
+});
