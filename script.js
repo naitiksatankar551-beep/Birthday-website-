@@ -91,7 +91,40 @@ setInterval(createSparkle, 250);
 
 const screen1 = document.getElementById("screen1");
 const screen2 = document.getElementById("screen2");
+function startCountdown(){
 
+    const countdown =
+    document.getElementById("countdown");
+
+    let numbers = ["3","2","1"];
+
+    let i = 0;
+
+
+    let timer = setInterval(()=>{
+
+        countdown.innerHTML = numbers[i];
+
+        i++;
+
+
+        if(i === numbers.length){
+
+            clearInterval(timer);
+
+            setTimeout(()=>{
+
+                countdown.innerHTML =
+                "Open Your Eyes ❤️";
+
+            },1000);
+
+        }
+
+
+    },1000);
+
+}
 const startBtn = document.getElementById("startBtn");
 
 startBtn.addEventListener("click", () => {
