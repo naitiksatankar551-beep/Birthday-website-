@@ -35,9 +35,7 @@ body{
 
 
 .screen.active{
-
-    display:flex;
-
+    display:flex !important;
 }
 
 
