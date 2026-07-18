@@ -151,6 +151,23 @@ if(openGiftBtn){
 
 }
 // =================================
+// BLOW CANDLES BUTTON
+// =================================
+
+let blowBtn = document.getElementById("blowCandles");
+
+if(blowBtn){
+
+    blowBtn.onclick = function(){
+
+        alert("Happy Birthday Rishuu ❤️");
+
+        showScreen("letterScreen");
+
+    };
+
+}
+// =================================
 // BUTTON SCREEN CHANGES
 // =================================
 
