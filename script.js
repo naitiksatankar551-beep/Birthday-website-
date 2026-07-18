@@ -130,7 +130,7 @@ let musicPlaying=false;
 
 
 // Apni music file ka naam yahan rakhna
-let music=new Audio("music.mp3");
+let music=new Audio("birthday.mp3");
 
 music.loop=true;
 
