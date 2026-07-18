@@ -383,25 +383,6 @@ buttons.forEach(btn=>{
 
 
 // =================================
-// AUTO LOVE SCREEN
-// =================================
-
-
-setTimeout(()=>{
-
-
-    let love=document.getElementById("loveScreen");
-
-
-    if(love){
-
-        love.classList.add("active");
-
-    }
-
-
-},12000);
-// =================================
 // MEMORY SCREEN BUTTON SUPPORT
 // =================================
 
