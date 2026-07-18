@@ -135,7 +135,6 @@ openGiftBtn.onclick = function(){
 };
 
 }
-
 // =================================
 // BLOW CANDLES BUTTON
 // =================================
@@ -146,31 +145,30 @@ if(blowBtn){
 
     blowBtn.onclick = function(){
 
+
         let birthdayMsg = document.createElement("div");
 
-birthdayMsg.innerHTML = "🎂 Happy Birthday Rishuu ❤️";
-
-birthdayMsg.style.position = "fixed";
-birthdayMsg.style.top = "50%";
-birthdayMsg.style.left = "50%";
-birthdayMsg.style.transform = "translate(-50%,-50%)";
-birthdayMsg.style.fontSize = "40px";
-birthdayMsg.style.zIndex = "9999";
-birthdayMsg.style.color = "white";
-birthdayMsg.style.textAlign = "center";
-
-document.body.appendChild(birthdayMsg);
+        birthdayMsg.innerHTML = "🎂 Happy Birthday Rishuu ❤️";
 
 
-setTimeout(()=>{
+        birthdayMsg.className = "birthday-popup";
 
-    birthdayMsg.remove();
 
-    showScreen("letterScreen");
+        document.body.appendChild(birthdayMsg);
 
-},3000);
 
-        showScreen("letterScreen");
+
+        setTimeout(()=>{
+
+
+            birthdayMsg.remove();
+
+
+            showScreen("letterScreen");
+
+
+        },3000);
+
 
     };
 
