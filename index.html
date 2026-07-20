@@ -1,0 +1,811 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>A Little Gift ❤️</title>  
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">  
+<style>  
+*{  
+    margin:0;  
+    padding:0;  
+    box-sizing:border-box;  
+}  
+  
+body{  
+    min-height:100vh;  
+    overflow-y:auto;  
+    font-family:'Poppins',sans-serif;  
+    display:flex;  
+    justify-content:center;  
+    align-items:center;  
+    background:linear-gradient(-45deg,#ff4fa3,#ff80c8,#c471ed,#6c63ff);  
+    background-size:400% 400%;  
+    animation:bg 12s infinite;  
+    padding: 40px 0;  
+}  
+  
+@keyframes bg{  
+    0%{ background-position:0% 50%; }  
+    50%{ background-position:100% 50%; }  
+    100%{ background-position:0% 50%; }  
+}  
+  
+#hearts{  
+    position:fixed;  
+    inset:0;  
+    pointer-events:none;  
+    z-index: 10;
+}  
+  
+.heart{  
+    position:absolute;  
+    bottom:-50px;  
+    animation:heart 7s linear forwards;  
+}  
+  
+@keyframes heart{  
+    from{ transform:translateY(0); opacity:1; }  
+    to{ transform:translateY(-110vh); opacity:0; }  
+}  
+  
+.card{  
+    width:90%;  
+    max-width:420px;  
+    padding:45px 30px;  
+    text-align:center;  
+    border-radius:30px;  
+    background:rgba(255,255,255,.15);  
+    backdrop-filter:blur(20px);  
+    box-shadow: 0 0 40px rgba(255,255,255,.3);  
+    animation:show 1.2s;  
+    position: relative;
+}  
+  
+@keyframes show{  
+    from{ opacity:0; transform:scale(.7); }  
+    to{ opacity:1; transform:scale(1); }  
+}  
+  
+.small{  
+    color:white;  
+    font-size:18px;  
+}  
+  
+h1{  
+    font-family:'Great Vibes',cursive;  
+    font-size:55px;  
+    color:white;  
+    margin:15px 0;  
+}  
+  
+#typing{  
+    color:white;  
+    font-size:18px;  
+    height:35px;  
+}  
+  
+button{  
+    margin-top:20px;  
+    padding:16px 35px;  
+    border:none;  
+    border-radius:50px;  
+    font-size:18px;  
+    font-weight:600;  
+    color:white;  
+    background: linear-gradient(45deg,#ff2d8d,#ff80c8);  
+    cursor:pointer;  
+    box-shadow: 0 0 25px pink;  
+    position: relative;
+    z-index: 20;
+    transition: all 0.2s ease;
+}  
+
+button:disabled {
+    background: #ccc;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* Quiz Styles */
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+.quiz-btn {
+    margin-top: 0;
+    padding: 12px 20px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    box-shadow: none;
+    border-radius: 15px;
+}
+.quiz-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Timeline Styles */
+.timeline {
+    margin-top: 25px;
+    text-align: left;
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px dashed rgba(255,255,255,0.5);
+}
+.timeline-item {
+    margin-bottom: 25px;
+    position: relative;
+    color: white;
+}
+.timeline-item::before {
+    content: '❤️';
+    position: absolute;
+    left: -29px;
+    top: 2px;
+    font-size: 12px;
+}
+.timeline-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+.timeline-desc {
+    font-size: 14px;
+    opacity: 0.9;
+}  
+  
+#countdown{  
+    font-size:70px;  
+    font-weight:700;  
+    color:white;  
+    margin:20px;  
+    text-shadow: 0 0 20px pink;  
+    animation:pulse 1s infinite;  
+}  
+  
+#countdown.message{  
+    font-size:24px;  
+    animation:none;  
+}  
+  
+#screen2 h1{  
+    font-size:50px;  
+}  
+  
+#screen1, #screen2, #quizScreen, #timelineScreen, #screen3, #galleryScreen, #proposalScreen, #finalScreen, #specialGalleryScreen{  
+    display:none;  
+}  
+  
+#screen3 h2{  
+    color:white;  
+    font-family:'Great Vibes', cursive;  
+    font-size:38px;  
+}  
+  
+.envelope-name{  
+    font-size:38px;  
+    color:white;  
+}  
+   
+#letter{  
+    display:none;  
+    position:relative;
+    width: 100%;
+    margin-top: 20px;
+}  
+  
+#envelope{  
+    position:relative;  
+    width:320px;  
+    height:220px;  
+    margin:20px auto;  
+    transition: all 0.5s ease;
+}  
+  
+.envelope-body{  
+    position:absolute;  
+    bottom:0;  
+    width:100%;  
+    height:150px;  
+    background:linear-gradient(135deg,#ff78b7,#ff4fa3);  
+    border-radius:0 0 18px 18px;  
+    box-shadow: 0 15px 35px rgba(0,0,0,.25);  
+    display:flex;  
+    flex-direction:column;  
+    justify-content:center;  
+    align-items:center;  
+    z-index: 4;
+}  
+  
+.envelope-top{  
+    position:absolute;  
+    top:0;  
+    left:0;  
+    width:0;  
+    height:0;  
+    border-left:160px solid transparent;  
+    border-right:160px solid transparent;  
+    border-bottom:95px solid #ff9ccc;  
+    transform-origin:top;  
+    transition:1s;  
+    z-index:5;  
+}  
+  
+.letter-paper{  
+    background:white;  
+    border-radius:15px;  
+    padding:25px;   
+    min-height:280px;  
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);  
+    z-index: 2;
+    position: relative;
+}  
+  
+.letter-paper h2{  
+    color:#ff3f90;  
+    margin-bottom:20px;  
+    font-size:34px;  
+    font-family:'Poppins', sans-serif;
+}  
+  
+#letterText{  
+    color:#555;  
+    font-size:16px;  
+    line-height:1.8;  
+    white-space:pre-line;  
+}  
+  
+.envelope-title{  
+    color:white;  
+    font-size:18px;  
+}  
+  
+.envelope-name{  
+    color:white;  
+    font-family:'Great Vibes',cursive;  
+    font-size:42px;  
+}  
+  
+#letterBtn, #galleryBtn, #nextToProposalBtn{  
+    margin-top:35px;  
+}  
+
+/* Photo Gallery CSS */
+.gallery-container {
+    width: 100%;
+    height: 320px;
+    position: relative;
+    margin: 20px 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    background: #000;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.gallery-img.active {
+    opacity: 1;
+}
+
+/* Question Section Styles */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    min-height: 80px;
+}
+.love-btn {
+    margin-top: 10px;
+    padding: 12px 30px;
+}
+#noBtn {
+    background: linear-gradient(45deg, #757575, #9e9e9e);
+    box-shadow: none;
+}
+#playfulResponse {
+    color: white;
+    font-size: 16px;
+    margin-top: 25px;
+    min-height: 50px;
+    font-weight: 600;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    line-height: 1.4;
+}
+
+/* New Special Gallery Custom Text Overlay */
+#specialGalleryText {
+    font-family: 'Great Vibes', cursive;
+    font-size: 38px;
+    color: #fff;
+    min-height: 60px;
+    margin-top: 15px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    transition: all 0.5s ease;
+    line-height: 1.3;
+}
+</style>  
+</head>  
+<body>  
+<div id="hearts"></div>  
+
+<audio id="bgMusic" src="tu_chahiye.mp3" preload="auto"></audio>
+<audio id="arzuMusic" src="arzu.mp3" preload="auto"></audio>
+
+<div class="card" id="timerScreen" style="display:block;">
+    <div style="font-size:50px;">⏳</div>
+    <h1>Hold Your Excitement!</h1>
+    <p style="color:white; font-size:16px; margin-bottom:15px;">Your special surprise opens in:</p>
+    <div id="countdownClock" style="font-size: 26px; font-weight: 700; color: white; margin: 20px 0; text-shadow: 0 0 15px pink;">
+        00d : 00h : 00m : 00s
+    </div>
+    <p style="color:rgba(255,255,255,0.8); font-size:14px; font-style:italic;">Made with ❤️ by Naitik</p>
+</div>
+
+<div class="card" id="screen1">  
+    <p class="small">A Little Gift From</p>  
+    <h1>Your Naitik ❤️</h1>  
+    <p id="typing"></p>  
+    <button onclick="nextScreen()">Open My Surprise ✨</button>  
+</div>  
+  
+<div class="card" id="screen2">  
+    <div style="font-size:60px;">👀</div>  
+    <h1>Close Your Eyes...</h1>  
+    <p style="color:white;font-size:18px;line-height:1.6;">I Have A Little Surprise<br>For You 🥰</p>  
+    <div id="countdown"></div>  
+    <button id="openBtn" style="display:none;" onclick="goToQuiz()">Show Me 💖</button>  
+</div>  
+
+<div class="card" id="quizScreen">
+    <div style="font-size: 50px;">🎮</div>
+    <h2 id="quizTitle" style="color: white; margin-bottom: 10px;">Let's Play A Game!</h2>
+    <p id="quizQuestion" style="color: white; font-size: 18px; font-weight: 600; min-height: 55px;"></p>
+    
+    <div class="quiz-options" id="quizOptions"></div>
+    <p id="quizFeedback" style="color: yellow; font-size: 15px; margin-top: 15px; font-weight: 600; min-height: 25px;"></p>
+</div>
+
+<div class="card" id="timelineScreen">
+    <div style="font-size: 50px;">⏳</div>
+    <h2 style="color: white; font-family:'Great Vibes', cursive; font-size: 45px;">Our Beautiful Journey</h2>
+    
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-title">The Day You Entered My Life 🌟</div>
+            <div class="timeline-desc">The moment everything changed and became so beautiful.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-title">Countless Late Night Chats 🌙</div>
+            <div class="timeline-desc">Those endless sweet talks where time just flew away.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-title">Every Beautiful Fight & Smile 💖</div>
+            <div class="timeline-desc">Every little thing made our love grow stronger.</div>
+        </div>
+    </div>
+    
+    <button onclick="goToScreen3()">Open Envelope 💌</button>
+</div>
+  
+<div class="card" id="screen3">  
+    <div id="envelope">  
+        <div class="envelope-top"></div>  
+        <div class="envelope-body">  
+            <p class="envelope-title">💌 For My Beautiful</p>  
+            <h2 class="envelope-name">Tanushree ❤️</h2>  
+        </div>  
+    </div>  
+    
+    <div id="letter">  
+        <div class="letter-paper">  
+            <h2>Happy Birthday ❤️</h2>  
+            <p id="letterText"></p>  
+        </div>  
+    </div>  
+
+    <button id="letterBtn" onclick="openLetter()">Open Letter 💌</button>  
+    <button id="galleryBtn" style="display:none;" onclick="showGallery()">See Something Special 📸</button>
+</div>  
+
+<div class="card" id="galleryScreen">
+    <h2 style="color:white; font-family:'Great Vibes', cursive; font-size:40px; margin-bottom:15px;">You Are Beautiful ✨</h2>
+    <div class="gallery-container">
+        <img src="photo1.jpg" class="gallery-img active" alt="Tanushree 1">
+        <img src="photo2.jpg" class="gallery-img" alt="Tanushree 2">
+        <img src="photo 3.jpg" class="gallery-img" alt="Tanushree 3">
+        <img src="photo4.jpg" class="gallery-img" alt="Tanushree 4">
+    </div>
+    <p style="color:white; font-size:16px; font-style:italic;">"Tu chahiye, mujhe tu chahiye..." 🎵</p>
+    <button id="nextToProposalBtn" onclick="showProposalScreen()">Click Here ✨</button>
+</div>
+
+<div class="card" id="proposalScreen">
+    <h1 style="font-size: 45px; line-height: 1.2;">I loveeeee youuuu<br>Tanushree ❤️</h1>
+    <p style="color: white; font-size: 20px; margin-top: 20px; font-weight: 600;">Do you love me? 👀</p>
+    
+    <div class="btn-group">
+        <button class="love-btn" id="yesBtn" onclick="answeredYes()">Yes! 🥰</button>
+        <button class="love-btn" id="noBtn" onclick="answeredNo()">No 🥺</button>
+    </div>
+    
+    <div id="playfulResponse"></div>
+</div>
+
+<div class="card" id="finalScreen">
+    <div style="font-size: 70px; animation: pulse 1s infinite;">💝</div>
+    <h1 style="font-size: 48px; color: #fff; margin-bottom: 5px;">You make my day .</h1>
+    <h2 style="font-family:'Great Vibes', cursive; font-size: 45px; color: #fff;">Yayyy! Hahaha 💕</h2>
+    <p style="color: white; font-size: 17px; line-height: 1.8; margin-top: 15px;">
+        I knew it! You love me too! 😘<br>
+        Thank you for being the sweetest part of my life, my Rasmalai.<br><br>
+        <span style="font-size: 22px; font-weight: bold; text-shadow: 0 0 10px white;">Happy Birthday Once Again! 🥳🎂</span>
+    </p>
+    <button onclick="showSpecialGallery()">Click for One Last Gift 🎁</button>
+    <p style="color: rgba(255,255,255,0.9); font-size: 15px; margin-top: 25px; font-style: italic; font-weight: 600;">Always yours — Naitik ❤️</p>
+</div>
+
+<div class="card" id="specialGalleryScreen">
+    <h2 style="color:white; font-family:'Great Vibes', cursive; font-size:42px; margin-bottom:10px;">Just For You 💖</h2>
+    <div class="gallery-container">
+        <img src="special1.jpg" class="special-gallery-img gallery-img active" alt="Special 1">
+        <img src="special2.jpg" class="special-gallery-img gallery-img" alt="Special 2">
+        <img src="special3.jpg" class="special-gallery-img gallery-img" alt="Special 3">
+        <img src="special4.jpg" class="special-gallery-img gallery-img" alt="Special 4">
+        <img src="special5.jpg" class="special-gallery-img gallery-img" alt="Special 5">
+        <img src="special6.jpg" class="special-gallery-img gallery-img" alt="Special 6">
+    </div>
+    <div id="specialGalleryText">You are Gorgeous ✨</div>
+    <p style="color:rgba(255,255,255,0.8); font-size:14px; margin-top:15px; font-style:italic;">Listening to Arzu... 🎵</p>
+</div>
+  
+<script>  
+const text = "Made only for my Rasmalai 🥰";  
+let i=0;  
+  
+function type(){  
+    if(i<text.length){  
+        document.getElementById("typing").innerHTML += text[i];  
+        i++;  
+        setTimeout(type,70);  
+    }  
+}  
+  
+function createPopEffect(symbol, count = 25) {
+    for (let k = 0; k < count; k++) {
+        let h = document.createElement("span");
+        h.className = "heart";
+        h.innerHTML = symbol;
+        h.style.left = (10 + Math.random() * 80) + "vw"; 
+        h.style.bottom = "0vh"; 
+        h.style.fontSize = (20 + Math.random() * 30) + "px";
+        
+        let duration = 2 + Math.random() * 3;
+        h.style.animation = "heart " + duration + "s cubic-bezier(0.25, 1, 0.5, 1) forwards";
+        
+        let sideMove = (Math.random() - 0.5) * 250;
+        h.style.transform = `translateX(${sideMove}px)`;
+        
+        document.getElementById("hearts").appendChild(h);
+        setTimeout(() => { h.remove(); }, duration * 1000);
+    }
+}
+
+function hearts(){  
+    let h=document.createElement("span");  
+    h.className="heart";  
+    h.innerHTML=["❤️","💖","💕","💗"][Math.floor(Math.random()*4)];  
+    h.style.left=Math.random()*100+"vw";  
+    h.style.fontSize=20+Math.random()*20+"px";  
+    document.getElementById("hearts").appendChild(h);  
+    setTimeout(()=>{ h.remove(); },7000);  
+}  
+setInterval(hearts,300);  
+  
+function nextScreen(){  
+    document.getElementById("screen1").style.display="none";  
+    document.getElementById("screen2").style.display="block";  
+    startCountdown();  
+}  
+  
+function startCountdown(){  
+    let count=3;  
+    let box=document.getElementById("countdown");  
+    let timer=setInterval(()=>{  
+        box.innerHTML=count;  
+        count--;  
+        if(count<0){  
+            clearInterval(timer);  
+            box.innerHTML="You Can Open Your Eyes ❤️";  
+            box.classList.add("message");  
+            document.getElementById("openBtn").style.display="inline-block";  
+        }  
+    },1000);  
+}  
+  
+function goToQuiz(){  
+    document.getElementById("screen2").style.display="none";  
+    document.getElementById("quizScreen").style.display="block";  
+    loadQuizQuestion();
+}
+
+// --- QUIZ GAME LOGIC ---
+let currentQuestionIndex = 0;
+const quizData = [
+    {
+        question: "What is Naitik's absolute favorite nickname for Tanushree? 👀",
+        options: ["Kaju Katli", "Rasmalai", "Barfi", "Sweetheart"],
+        correct: "Rasmalai"
+    },
+    {
+        question: "According to Naitik, what is the most beautiful thing about Tanushree? ✨",
+        options: ["Your Eyes", "Your Smile", "All of them! ❤️"],
+        correct: "All of them! ❤️"
+    }
+];
+
+function loadQuizQuestion() {
+    document.getElementById("quizFeedback").innerHTML = "";
+    const currentQuiz = quizData[currentQuestionIndex];
+    document.getElementById("quizTitle").innerHTML = `Question ${currentQuestionIndex + 1} of 2`;
+    document.getElementById("quizQuestion").innerHTML = currentQuiz.question;
+    
+    const optionsContainer = document.getElementById("quizOptions");
+    optionsContainer.innerHTML = "";
+    
+    currentQuiz.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.className = "quiz-btn";
+        btn.innerHTML = opt;
+        btn.onclick = () => checkQuizAnswer(opt);
+        optionsContainer.appendChild(btn);
+    });
+}
+
+function checkQuizAnswer(selectedOption) {
+    const currentQuiz = quizData[currentQuestionIndex];
+    const feedback = document.getElementById("quizFeedback");
+    
+    if(selectedOption === currentQuiz.correct) {
+        createPopEffect("🎉", 15);
+        feedback.style.color = "#4edf4e";
+        feedback.innerHTML = "Correct! Superb 🥰";
+        
+        setTimeout(() => {
+            currentQuestionIndex++;
+            if(currentQuestionIndex < quizData.length) {
+                loadQuizQuestion();
+            } else {
+                document.getElementById("quizScreen").style.display = "none";
+                document.getElementById("timelineScreen").style.display = "block";
+            }
+        }, 1200);
+    } else {
+        feedback.style.color = "#ffdddd";
+        feedback.innerHTML = "Oops! Try again my Rasmalai 😜";
+        createPopEffect("❌", 5);
+    }
+}
+
+function goToScreen3() {
+    document.getElementById("timelineScreen").style.display = "none";
+    document.getElementById("screen3").style.display = "block";
+}
+  
+const message = `Happy Birthday,  
+My Beautiful Tanushree ❤️  
+  
+Today is one of the most beautiful days because it's the day you came into this world.  
+  
+May your smile always stay the same,  
+may all your dreams come true,  
+and may happiness always find you.  
+  
+Thank you for being such an amazing person.  
+  
+Happy Birthday once again,  
+My Rasmalai ❤️  
+  
+Forever Yours,  
+Naitik 💖`;  
+  
+function openLetter(){  
+    document.getElementById("letterBtn").disabled = true;
+
+    createPopEffect("🎉");
+    createPopEffect("🎈");
+    createPopEffect("✨");
+
+    document.querySelector(".envelope-top").style.transform = "rotateX(180deg)";  
+    
+    setTimeout(() => {
+        document.getElementById("envelope").style.display = "none";
+        const letter = document.getElementById("letter");  
+        letter.style.display = "block";  
+        
+        let i=0;  
+        const box=document.getElementById("letterText");  
+        box.innerHTML="";  
+      
+        function typing(){  
+            if(i<message.length){  
+                box.innerHTML+=message.charAt(i);  
+                i++;  
+                setTimeout(typing,35);  
+                window.scrollTo(0, document.body.scrollHeight);
+            } else {
+                document.getElementById("letterBtn").style.display = "none";
+                document.getElementById("galleryBtn").style.display = "inline-block";
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+        }  
+        typing();
+    }, 1000);
+}  
+
+function showGallery(){
+    document.getElementById("screen3").style.display = "none";
+    document.getElementById("galleryScreen").style.display = "block";
+    
+    const audio = document.getElementById("bgMusic");
+    audio.currentTime = 0; 
+    audio.play().catch(error => {
+        console.log("Audio play failed:", error);
+    });
+
+    const images = document.querySelectorAll(".gallery-img:not(.special-gallery-img)");
+    let currentImgIndex = 0;
+
+    setInterval(() => {
+        if(document.getElementById("galleryScreen").style.display === "block") {
+            images[currentImgIndex].classList.remove("active");
+            currentImgIndex = (currentImgIndex + 1) % images.length;
+            images[currentImgIndex].classList.add("active");
+        }
+    }, 3000); 
+}
+
+function showProposalScreen(){
+    document.getElementById("galleryScreen").style.display = "none";
+    document.getElementById("proposalScreen").style.display = "block";
+}
+
+let noClickCount = 0;
+const playfulPhrases = [
+    "Are you sure? Think about it one more time... 🥺",
+    "Error 404: 'No' option not available in my heart! 😜",
+    "Wait, did you mean to click the 'YES' button? Try again! 🤔",
+    "Nice try, but 'No' is not an answer. Click YES! ❤️",
+    "My heart just skipped a beat... Please reconsider! 😭"
+];
+
+function answeredNo() {
+    createPopEffect("😢", 15);
+    const responseBox = document.getElementById("playfulResponse");
+    
+    if(noClickCount < 5) {
+        responseBox.innerHTML = playfulPhrases[noClickCount];
+        
+        const yesBtn = document.getElementById("yesBtn");
+        let currentYesSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+        let currentPaddingTop = parseFloat(window.getComputedStyle(yesBtn).paddingTop);
+        let currentPaddingLeft = parseFloat(window.getComputedStyle(yesBtn).paddingLeft);
+        
+        yesBtn.style.fontSize = (currentYesSize + 5) + "px";
+        yesBtn.style.padding = `${currentPaddingTop + 4}px ${currentPaddingLeft + 8}px`;
+        
+        noClickCount++;
+        
+        if(noClickCount === 5) {
+            setTimeout(() => {
+                document.getElementById("noBtn").style.display = "none";
+                responseBox.innerHTML = "Look! You have no choice now. Click YES! 😘";
+            }, 1000);
+        }
+    }
+}
+
+function answeredYes() {
+    let interval = setInterval(() => {
+        createPopEffect("✨", 15);
+        createPopEffect("💥", 10);
+        createPopEffect("💖", 10);
+    }, 300);
+    
+    setTimeout(() => { clearInterval(interval); }, 3000);
+
+    document.getElementById("proposalScreen").style.display = "none";
+    document.getElementById("finalScreen").style.display = "block";
+}
+
+// --- SHOW SPECIAL 6-PHOTO GALLERY WITH CUSTOM TEXTS ---
+function showSpecialGallery() {
+    document.getElementById("bgMusic").pause();
+    document.getElementById("finalScreen").style.display = "none";
+    document.getElementById("specialGalleryScreen").style.display = "block";
+    
+    const arzuAudio = document.getElementById("arzuMusic");
+    arzuAudio.currentTime = 0;
+    arzuAudio.play().catch(e => console.log("Arzu play failed:", e));
+    
+    const specialImages = document.querySelectorAll(".special-gallery-img");
+    const textBox = document.getElementById("specialGalleryText");
+    
+    // 6 unique text messages for 6 photos
+    const specialTexts = [
+        "You are Gorgeous ✨",
+        "Simply Stunning 💖",
+        "My Whole World 🌍❤️",
+        "The Best Part of My Life 🥰",
+        "Happy Birthday Rishuuu! 🥳🎂",
+        "I love you Rishuuu ❤️"
+    ];
+    
+    let specialImgIndex = 0;
+    textBox.innerHTML = specialTexts[0]; // Set initial text
+    
+    setInterval(() => {
+        specialImages[specialImgIndex].classList.remove("active");
+        specialImgIndex = (specialImgIndex + 1) % specialImages.length;
+        specialImages[specialImgIndex].classList.add("active");
+        
+        // Update text along with the photo
+        textBox.innerHTML = specialTexts[specialImgIndex];
+        
+        // Special heart burst on the final text!
+        if(specialImgIndex === 5) {
+            createPopEffect("❤️", 20);
+            createPopEffect("💕", 15);
+        } else {
+            createPopEffect("💖", 5);
+        }
+    }, 3500); // Changes image and text every 3.5 seconds
+}
+
+// --- 29 JULY LOCK TIMER CODE ---
+const targetDate = new Date("July 19, 2026 00:00:00").getTime();
+
+function startUnlockTimer() {
+    const clock = document.getElementById("countdownClock");
+    
+    const interval = setInterval(() => {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference <= 0) {
+            clearInterval(interval);
+            document.getElementById("timerScreen").style.display = "none";
+            document.getElementById("screen1").style.display = "block";
+            type(); 
+            return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        clock.innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+    }, 1000);
+}
+
+startUnlockTimer();
+</script> 
+</body>  
+  </html>
+              
