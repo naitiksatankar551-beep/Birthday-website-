@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Tanushree! ✨</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* ==========================================
+       1. GLOBAL STYLES & LUXURY PASTEL THEME
+       ========================================== */
+    :root {
+      --bg-gradient: linear-gradient(135deg, #090314 0%, #1a0826 50%, #2a083b 100%);
+      --pink-glow: #ff75c3;
+      --soft-pink: #ffa8e2;
+      --gold-sparkle: #ffd700;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-blur: blur(16px);
+      --text-color: #fce4ec;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-color);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Sakura & Particle Overlay */
+    .particle-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .petal, .floating-heart, .sparkle {
+      position: absolute;
+      top: -10%;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg) translateX(50px); opacity: 0; }
+    }
+
+    /* Modern Glassmorphism Card Style */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 30px 20px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      margin: 20px auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Buttons */
+    .btn-glow {
+      background: linear-gradient(45deg, #ff75c3, #9b51e0);
+      border: none;
+      color: white;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 117, 195, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-top: 20px;
+    }
+
+    .btn-glow:active {
+      transform: scale(0.95);
+    }
+
+    /* Typography */
+    .title-fancy {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      background: linear-gradient(45deg, var(--soft-pink), var(--gold-sparkle));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    /* Sections / Screens Control */
+    section {
+      display: none;
+      min-height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    section.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    /* ==========================================
+       2. INDIVIDUAL SECTION STYLES
+       ========================================== */
+
+    /* Audio Player Widget */
+    .music-player {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      padding: 8px 15px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+    }
+
+    .music-btn {
+      background: none;
+      border: none;
+      color: var(--soft-pink);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    /* Loader */
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255,117,195,0.2);
+      border-top-color: var(--pink-glow);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    /* Polaroid Gallery */
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .polaroid {
+      background: white;
+      padding: 10px 10px 25px 10px;
+      border-radius: 4px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease;
+      width: 140px;
+    }
+
+    .polaroid:nth-child(even) {
+      transform: rotate(3deg);
+    }
+
+    .polaroid:hover {
+      transform: scale(1.1) rotate(0deg);
+      z-index: 5;
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .polaroid-caption {
+      color: #333;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.2rem;
+      margin-top: 8px;
+    }
+
+    /* Wishes Cards */
+    .wish-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .wish-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--glass-border);
+      padding: 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .wish-card.revealed {
+      background: linear-gradient(135deg, rgba(255,117,195,0.3), rgba(155,81,224,0.3));
+      border-color: var(--pink-glow);
+    }
+
+    /* Cake Interactive */
+    .cake {
+      width: 120px;
+      height: 90px;
+      background: #f48fb1;
+      border-radius: 10px 10px 0 0;
+      position: relative;
+      margin: 40px auto 10px;
+    }
+    .cake::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: #f06292;
+      border-radius: 10px;
+    }
+    .candle {
+      width: 8px;
+      height: 30px;
+      background: #fff;
+      position: absolute;
+      top: -30px;
+      left: 56px;
+      border-radius: 3px;
+    }
+    .flame {
+      width: 12px;
+      height: 18px;
+      background: #ffb74d;
+      border-radius: 50% 50% 20% 20%;
+      position: absolute;
+      top: -15px;
+      left: -2px;
+      box-shadow: 0 0 10px #ffb74d;
+      animation: flicker 0.6s infinite alternate;
+    }
+    .flame.off {
+      display: none;
+    }
+    @keyframes flicker {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particle-container" id="particleContainer"></div>
+
+  <div class="music-player">
+    <button class="music-btn" id="playBtn" onclick="toggleMusic()">🎵</button>
+    <span id="musicStatus">Play Song</span>
+    <audio id="bgMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+  </div>
+
+  <section id="sec-loading" class="active">
+    <div class="glass-card">
+      <div class="spinner"></div>
+      <p style="letter-spacing: 1px; font-size: 0.9rem; opacity: 0.8;">Preparing a surprise for Tanushree...</p>
+    </div>
+  </section>
+
+  <section id="sec-welcome">
+    <div class="glass-card">
+      <p style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; color: var(--soft-pink);">For Someone Very Special ❤️</p>
+      <h1 class="title-fancy" style="margin-top: 10px;">Hi Tanushree...</h1>
+      <p style="font-weight: 300; line-height: 1.6; margin-top: 15px; font-size: 0.95rem;">
+        Someone spent time making this<br>just to make you smile.
+      </p>
+      <button class="btn-glow" onclick="nextSection('sec-birthday')">Tap to Begin ✨</button>
+    </div>
+  </section>
+
+  <section id="sec-birthday">
+    <div class="glass-card">
+      <h1 class="title-fancy" style="font-size: 2.5rem;">🎉 Happy Birthday Tanushree! 🎂</h1>
+      <p style="margin-top: 15px; font-weight: 300;">Wishing you a day as glowing and beautiful as you are ✨</p>
+      <button class="btn-glow" onclick="nextSection('sec-letter')">Read Letter 💌</button>
+    </div>
+  </section>
+
+  <section id="sec-letter">
+    <div class="glass-card" style="text-align: left;">
+      <h2 style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--soft-pink); margin-bottom: 10px;">Dear Tanushree,</h2>
+      <p style="font-weight: 300; font-size: 0.9rem; line-height: 1.7; opacity: 0.9;">
+        Today is all about celebrating you. I hope your birthday is filled with happiness, laughter, and beautiful memories. Even though this is just a small surprise, every part of it was made with care. Thank you for being such a wonderful person.<br><br>
+        May this year bring you success, peace, endless smiles, and all the dreams you wish for. Happy Birthday once again. ❤️
+      </p>
+      <p style="text-align: right; margin-top: 15px; font-weight: 600; color: var(--pink-glow);">— Naitik</p>
+      <div style="text-align: center;">
+        <button class="btn-glow" onclick="nextSection('sec-gallery')">View Memories 📸</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec-gallery">
+    <div class="glass-card" style="max-width: 500px;">
+      <h2 style="font-size: 1.5rem; color: var(--soft-pink);">Beautiful Memories 🌸</h2>
+      <p style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 10px;">(Replace photo URLs in code)</p>
+      
+      <div class="gallery-container">
+        <div class="polaroid">
+          <img src="https://picsum.photos/200/200?random=1" alt="Memory 1">
+          <div class="polaroid-caption">Smile ✨</div>
+        </div>
+        <div class="polaroid">
+          <img src="https://picsum.photos/200/200?random=2" alt="Memory 2">
+          <div class="polaroid-caption">Shine 🌸</div>
+        </div>
+        <div class="polaroid">
+          <img src="https://picsum.photos/200/200?random=3" alt="Memory 3">
+          <div class="polaroid-caption">Happy Times ❤️</div>
+        </div>
+      </div>
+
+      <button class="btn-glow" onclick="nextSection('sec-wishes')">Open Wishes Cards 🌸</button>
+    </div>
+  </section>
+
+  <section id="sec-wishes">
+    <div class="glass-card">
+      <h2 style="font-size: 1.5rem; color: var(--soft-pink); margin-bottom: 5px;">Birthday Wishes</h2>
+      <p style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 15px;">Tap cards to reveal messages ✨</p>
+
+      <div class="wish-grid">
+        <div class="wish-card" onclick="revealWish(this, 'Keep smiling 😊')">Tap to open</div>
+        <div class="wish-card" onclick="revealWish(this, 'Stay happy ❤️')">Tap to open</div>
+        <div class="wish-card" onclick="revealWish(this, 'Keep shining ✨')">Tap to open</div>
+        <div class="wish-card" onclick="revealWish(this, 'Never stop dreaming 🌸')">Tap to open</div>
+      </div>
+
+      <button class="btn-glow" id="btnToCake" style="display:none; margin-top:25px;" onclick="nextSection('sec-cake')">Make a Wish 🎂</button>
+    </div>
+  </section>
+
+  <section id="sec-cake">
+    <div class="glass-card">
+      <h2 style="font-size: 1.5rem; color: var(--soft-pink);">Blow the Candle!</h2>
+      
+      <div class="cake">
+        <div class="candle">
+          <div class="flame" id="flame"></div>
+        </div>
+      </div>
+
+      <button class="btn-glow" id="blowBtn" onclick="blowCandle()">Blow the Candles 🌬️</button>
+      <button class="btn-glow" id="finalBtn" style="display: none;" onclick="nextSection('sec-final')">Final Message ✨</button>
+    </div>
+  </section>
+
+  <section id="sec-final">
+    <div class="glass-card">
+      <h1 class="title-fancy" style="font-size: 2.2rem;">Happy Birthday Tanushree ❤️</h1>
+      <p style="font-weight: 300; margin: 20px 0; line-height: 1.5; font-size: 1rem;">
+        "May every birthday be happier than the last."
+      </p>
+      <hr style="border: 0; height: 1px; background: var(--glass-border); margin: 20px 0;">
+      <p style="font-size: 0.85rem; letter-spacing: 1px; color: var(--soft-pink);">
+        Made with ❤️ by <strong>Naitik</strong>
+      </p>
+    </div>
+  </section>
+
+  <script>
+    // --- 1. Audio Control ---
+    const music = document.getElementById('bgMusic');
+    const playBtn = document.getElementById('playBtn');
+    const musicStatus = document.getElementById('musicStatus');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        playBtn.innerText = '🎵';
+        musicStatus.innerText = 'Paused';
+      } else {
+        music.play();
+        playBtn.innerText = '⏸️';
+        musicStatus.innerText = 'Playing';
+      }
+      isPlaying = !isPlaying;
+    }
+
+    // --- 2. Screen Navigation ---
+    function nextSection(nextId) {
+      document.querySelectorAll('section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      const target = document.getElementById(nextId);
+      target.classList.add('active');
+
+      // Auto trigger confetti on Birthday screen transition
+      if (nextId === 'sec-birthday') {
+        triggerConfetti();
+        // Try playing music automatically on user interaction
+        if(!isPlaying) toggleMusic();
+      }
+    }
+
+    // Auto-advance from loading screen
+    setTimeout(() => {
+      nextSection('sec-welcome');
+    }, 2500);
+
+    // --- 3. Floating Particles (Petals, Hearts, Sparkles) ---
+    function createParticles() {
+      const container = document.getElementById('particleContainer');
+      const items = ['🌸', '💖', '✨', '🌸', '🤍'];
+
+      setInterval(() => {
+        const particle = document.createElement('div');
+        particle.className = 'petal';
+        particle.innerText = items[Math.floor(Math.random() * items.length)];
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        particle.style.fontSize = (Math.random() * 10 + 12) + 'px';
+        container.appendChild(particle);
+
+        setTimeout(() => particle.remove(), 7000);
+      }, 500);
+    }
+    createParticles();
+
+    // --- 4. Confetti Effect ---
+    function triggerConfetti() {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+    }
+
+    // --- 5. Wish Card Reveal Logic ---
+    let revealedCount = 0;
+    function revealWish(card, text) {
+      if (!card.classList.contains('revealed')) {
+        card.innerText = text;
+        card.classList.add('revealed');
+        revealedCount++;
+        if (revealedCount >= 4) {
+          document.getElementById('btnToCake').style.display = 'inline-block';
+        }
+      }
+    }
+
+    // --- 6. Candle Blowing Logic ---
+    function blowCandle() {
+      document.getElementById('flame').classList.add('off');
+      document.getElementById('blowBtn').style.display = 'none';
+      document.getElementById('finalBtn').style.display = 'inline-block';
+      
+      triggerConfetti();
+      setTimeout(triggerConfetti, 400);
+    }
+  </script>
+</body>
+</html>
